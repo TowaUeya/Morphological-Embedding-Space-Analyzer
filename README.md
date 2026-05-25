@@ -94,12 +94,19 @@ Depending on the command, outputs include:
 
 ## Related Repositories
 
-This repository provides the embedding-generation pipeline. Downstream analyses and related tools are maintained in the following repositories:
+Morphological-Embedding-Space-Analyzer is the embedding-space analysis component of a small research software ecosystem for morphology-based analysis of 3D specimen models. It assumes that specimen-level embeddings have already been generated, and connects those embeddings to retrieval, clustering, visualization, and evaluation workflows.
 
-- **MultiView3D-DINOv2**  
-  [https://github.com/TowaUeya/MultiView3D-DINOv2](https://github.com/TowaUeya/MultiView3D-DINOv2)  
-  Software pipeline for rendering multi-view images from 3D specimens and extracting frozen DINOv2 embeddings.
+- **Embedding generation**  
+  **MultiView3D-DINOv2**  
+  https://github.com/TowaUeya/MultiView3D-DINOv2  
+  Renders multi-view images from 3D specimen models and extracts frozen DINOv2 features, producing the specimen-level embeddings used as input for this repository.
 
-- **Repository-Name-2**  
-  https://github.com/TowaUeya/Repository-Name-2  
-  Briefly describe what this repository is used for and how it relates to MultiView3D-DINO
+- **Embedding-space analysis**  
+  **Morphological-Embedding-Space-Analyzer**  
+  https://github.com/TowaUeya/Morphological-Embedding-Space-Analyzer  
+  Performs downstream analysis of specimen-level embeddings, including nearest-neighbor retrieval, HDBSCAN-based auxiliary structure extraction, leaf-core and residual analysis, visualization, and publication-oriented figure generation.
+
+- **Embedding explainability**  
+  **Morphological-Embedding-Explainability**  
+  https://github.com/TowaUeya/Morphological-Embedding-Explainability  
+  Complements embedding-space analysis by visualizing attention rollout and related image-level evidence, helping interpret which rendered views and visual cues contribute to ViT-based embedding formation.
