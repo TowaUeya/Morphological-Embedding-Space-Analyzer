@@ -1,5 +1,5 @@
 # Morphological Embedding Space Analyzer: Retrieval, clustering, and visualization of DINOv2-based morphological embeddings
-Analysis toolkit for evaluating nearest-neighbor retrieval, HDBSCAN-based auxiliary structure, leaf-core regions, residual samples, and publication figures.
+Analysis toolkit for nearest-neighbor retrieval evaluation, HDBSCAN-based clustering, leaf-core and residual sample extraction, embedding-space visualization, and publication-oriented figure generation.
 
 ## Requirements
 - Python 3.10+
@@ -82,9 +82,11 @@ Depending on the command, outputs include:
 ```bibtex
 @software{morphological_embedding_space_analyzer,
   title  = {Morphological Embedding Space Analyzer},
-  author = {Your Name or Team},
+  author = {Ueya, Towa and Iba, Yasuhiro},
   year   = {2026},
-  url    = {https://github.com/your-org/morphological-embedding-space-analyzer}
+  url    = {https://github.com/TowaUeya/Morphological-Embedding-Space-Analyzer},
+  doi    = {10.5281/zenodo.20258408},
+  note   = {Software toolkit for embedding-space retrieval, clustering, and visualization}
 }
 ```
 
@@ -104,7 +106,7 @@ Morphological-Embedding-Space-Analyzer is the embedding-space analysis component
 - **Embedding-space analysis**  
   **Morphological-Embedding-Space-Analyzer**  
   [https://github.com/TowaUeya/Morphological-Embedding-Space-Analyzer](https://github.com/TowaUeya/Morphological-Embedding-Space-Analyzer)  
-  Performs downstream analysis of specimen-level embeddings, including nearest-neighbor retrieval, HDBSCAN-based auxiliary structure extraction, leaf-core and residual analysis, visualization, and publication-oriented figure generation.
+  Performs downstream analysis of specimen-level embeddings, including retrieval evaluation, HDBSCAN-based clustering, leaf-core and residual sample extraction, embedding-space visualization, and publication-oriented figure generation.
 
 - **Embedding explainability**  
   **Morphological-Embedding-Explainability**  
