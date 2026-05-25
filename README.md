@@ -98,15 +98,15 @@ Morphological-Embedding-Space-Analyzer is the embedding-space analysis component
 
 - **Embedding generation**  
   **MultiView3D-DINOv2**  
-  https://github.com/TowaUeya/MultiView3D-DINOv2  
+  [https://github.com/TowaUeya/MultiView3D-DINOv2](https://github.com/TowaUeya/MultiView3D-DINOv2)  
   Renders multi-view images from 3D specimen models and extracts frozen DINOv2 features, producing the specimen-level embeddings used as input for this repository.
 
 - **Embedding-space analysis**  
   **Morphological-Embedding-Space-Analyzer**  
-  https://github.com/TowaUeya/Morphological-Embedding-Space-Analyzer  
+  [https://github.com/TowaUeya/Morphological-Embedding-Space-Analyzer](https://github.com/TowaUeya/Morphological-Embedding-Space-Analyzer)  
   Performs downstream analysis of specimen-level embeddings, including nearest-neighbor retrieval, HDBSCAN-based auxiliary structure extraction, leaf-core and residual analysis, visualization, and publication-oriented figure generation.
 
 - **Embedding explainability**  
   **Morphological-Embedding-Explainability**  
-  https://github.com/TowaUeya/Morphological-Embedding-Explainability  
+  [https://github.com/TowaUeya/Morphological-Embedding-Explainability](https://github.com/TowaUeya/Morphological-Embedding-Explainability)  
   Complements embedding-space analysis by visualizing attention rollout and related image-level evidence, helping interpret which rendered views and visual cues contribute to ViT-based embedding formation.
