@@ -11,7 +11,7 @@ pip install -r requirements.txt
 ```
 
 ## Input Files
-This repository expects embeddings.npy and ids.txt, typically produced by MultiView3D-DINOv2.
+This repository expects `embeddings.npy` and `ids.txt`, typically produced by MultiView3D-DINOv2.
 
 Expected inputs are precomputed embeddings and metadata:
 - `embeddings.npy` (required)
