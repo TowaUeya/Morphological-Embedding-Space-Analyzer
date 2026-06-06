@@ -25,10 +25,10 @@ This repository does **not** generate embeddings. It analyzes externally prepare
 ### 1) Retrieval evaluation
 ```bash
 python -m src.evaluate_embedding_retrieval \
-  --embeddings embeddings.npy \
+  --emb embeddings.npy \
   --ids ids.txt \
   --labels labels.csv \
-  --outdir results/retrieval
+  --out results/retrieval
 ```
 
 ### 2) Clustering (baseline / optional auxiliary)
