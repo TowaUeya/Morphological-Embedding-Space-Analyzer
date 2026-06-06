@@ -34,38 +34,38 @@ python -m src.evaluate_embedding_retrieval \
 ### 2) Clustering (baseline / optional auxiliary)
 ```bash
 python -m src.cluster_baseline \
-  --embeddings embeddings.npy \
+  --emb embeddings.npy \
   --ids ids.txt \
-  --outdir results/cluster_baseline
+  --out results/cluster_baseline
 
 python -m src.cluster_recursive_hdbscan \
-  --embeddings embeddings.npy \
+  --emb embeddings.npy \
   --ids ids.txt \
-  --outdir results/cluster_recursive
+  --out results/cluster_recursive
 
 python -m src.cluster_branch_detector \
-  --embeddings embeddings.npy \
+  --emb embeddings.npy \
   --ids ids.txt \
-  --outdir results/cluster_branch_aux
+  --out results/cluster_branch_aux
 ```
 
 ### 3) Leaf core / residual analysis and figure generation
 ```bash
 python -m src.analyze_leaf_cores \
-  --embeddings embeddings.npy \
+  --emb embeddings.npy \
   --ids ids.txt \
   --clusters results/cluster_baseline/clusters.csv \
-  --outdir results/leaf_cores
+  --out results/leaf_cores
 
 python -m src.assign_to_leaf_cores \
-  --embeddings embeddings.npy \
+  --emb embeddings.npy \
   --ids ids.txt \
   --leaf-cores results/leaf_cores/leaf_cores.csv \
-  --outdir results/leaf_assignments
+  --out results/leaf_assignments
 
 python -m src.plot_publication_figures \
   --input-dir results \
-  --outdir results/figures
+  --out results/figures
 ```
 
 ## Outputs
