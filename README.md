@@ -32,25 +32,25 @@ python -m src.evaluate_embedding_retrieval \
 ```
 
 ### 2) Clustering (baseline / optional auxiliary)
-クラスタリングのエントリポイントは `src.cluster_baseline` のみです。再帰的HDBSCAN
-(`cluster_recursive_hdbscan.py`)や分岐検出(`cluster_branch_detector.py`)は単独実行できる
-スクリプトではなく、`--auxiliary_method` で `cluster_baseline` から呼び出します。
+The only clustering entry point is `src.cluster_baseline`. Recursive HDBSCAN
+(`cluster_recursive_hdbscan.py`) and branch detection (`cluster_branch_detector.py`)
+are not standalone scripts; they are invoked from `cluster_baseline` via `--auxiliary_method`.
 
 ```bash
-# ベースライン(HDBSCAN)
+# Baseline (HDBSCAN)
 python -m src.cluster_baseline \
   --emb embeddings.npy \
   --ids ids.txt \
   --out results/cluster_baseline
 
-# 補助: 再帰的HDBSCAN
+# Auxiliary: recursive HDBSCAN
 python -m src.cluster_baseline \
   --emb embeddings.npy \
   --ids ids.txt \
   --out results/cluster_recursive \
   --auxiliary_method recursive
 
-# 補助: 分岐検出(BranchDetector)
+# Auxiliary: branch detection (BranchDetector)
 python -m src.cluster_baseline \
   --emb embeddings.npy \
   --ids ids.txt \
@@ -60,20 +60,20 @@ python -m src.cluster_baseline \
 
 ### 3) Leaf core / residual analysis and figure generation
 ```bash
-# リーフコアの特性評価(--emb は不要。--clusters と --out が必須)
-# --ids / --labels は任意(省略時は clusters.csv の specimen_id とラベル推論を使用)
+# Characterize leaf cores (--emb is not needed; --clusters and --out are required)
+# --ids / --labels are optional (if omitted, specimen_ids from clusters.csv and label inference are used)
 python -m src.analyze_leaf_cores \
   --clusters results/cluster_baseline/clusters.csv \
   --out results/leaf_cores
 
-# リーフノイズ点を最近傍コアへ割り当て(入力は --clusters。--leaf-cores 引数は存在しない)
+# Assign leaf-noise points to their nearest core (input is --clusters; there is no --leaf-cores argument)
 python -m src.assign_to_leaf_cores \
   --emb embeddings.npy \
   --ids ids.txt \
   --clusters results/cluster_baseline/clusters.csv \
   --out results/leaf_assignments
 
-# 論文用の表・図を生成(--input-dir は無い。各入力ファイルを個別に指定。すべて任意、--out のみ必須)
+# Generate publication-ready tables and figures (no --input-dir; specify each input file individually; all optional except --out)
 python -m src.plot_publication_figures \
   --retrieval-overall results/retrieval/retrieval_overall.csv \
   --retrieval-by-label results/retrieval/retrieval_by_label.csv \
