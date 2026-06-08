@@ -32,39 +32,55 @@ python -m src.evaluate_embedding_retrieval \
 ```
 
 ### 2) Clustering (baseline / optional auxiliary)
+クラスタリングのエントリポイントは `src.cluster_baseline` のみです。再帰的HDBSCAN
+(`cluster_recursive_hdbscan.py`)や分岐検出(`cluster_branch_detector.py`)は単独実行できる
+スクリプトではなく、`--auxiliary_method` で `cluster_baseline` から呼び出します。
+
 ```bash
+# ベースライン(HDBSCAN)
 python -m src.cluster_baseline \
   --emb embeddings.npy \
   --ids ids.txt \
   --out results/cluster_baseline
 
-python -m src.cluster_recursive_hdbscan \
+# 補助: 再帰的HDBSCAN
+python -m src.cluster_baseline \
   --emb embeddings.npy \
   --ids ids.txt \
-  --out results/cluster_recursive
+  --out results/cluster_recursive \
+  --auxiliary_method recursive
 
-python -m src.cluster_branch_detector \
+# 補助: 分岐検出(BranchDetector)
+python -m src.cluster_baseline \
   --emb embeddings.npy \
   --ids ids.txt \
-  --out results/cluster_branch_aux
+  --out results/cluster_branch_aux \
+  --auxiliary_method branch
 ```
 
 ### 3) Leaf core / residual analysis and figure generation
 ```bash
+# リーフコアの特性評価(--emb は不要。--clusters と --out が必須)
+# --ids / --labels は任意(省略時は clusters.csv の specimen_id とラベル推論を使用)
 python -m src.analyze_leaf_cores \
-  --emb embeddings.npy \
-  --ids ids.txt \
   --clusters results/cluster_baseline/clusters.csv \
   --out results/leaf_cores
 
+# リーフノイズ点を最近傍コアへ割り当て(入力は --clusters。--leaf-cores 引数は存在しない)
 python -m src.assign_to_leaf_cores \
   --emb embeddings.npy \
   --ids ids.txt \
-  --leaf-cores results/leaf_cores/leaf_cores.csv \
+  --clusters results/cluster_baseline/clusters.csv \
   --out results/leaf_assignments
 
+# 論文用の表・図を生成(--input-dir は無い。各入力ファイルを個別に指定。すべて任意、--out のみ必須)
 python -m src.plot_publication_figures \
-  --input-dir results \
+  --retrieval-overall results/retrieval/retrieval_overall.csv \
+  --retrieval-by-label results/retrieval/retrieval_by_label.csv \
+  --retrieval-by-subset results/retrieval/retrieval_by_subset.csv \
+  --leaf-summary results/leaf_cores/leaf_core_summary.json \
+  --leaf-coverage results/leaf_cores/category_coverage.csv \
+  --cluster-purity results/leaf_cores/cluster_purity.csv \
   --out results/figures
 ```
 
