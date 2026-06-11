@@ -25,9 +25,9 @@ This repository does **not** generate embeddings. It analyzes externally prepare
 ### 1) Retrieval evaluation
 ```bash
 python -m src.evaluate_embedding_retrieval \
-  --emb embeddings.npy \
-  --ids ids.txt \
-  --labels labels.csv \
+  --emb ../MultiView3D-DINOv2/data/embeddings/embeddings.npy \
+  --ids ../MultiView3D-DINOv2/data/embeddings/ids.txt \
+  --labels ../MultiView3D-DINOv2/data/labels.csv \
   --out results/retrieval
 ```
 
